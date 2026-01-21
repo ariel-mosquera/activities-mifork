@@ -60,6 +60,7 @@ public class Activity7Test {
     hospital.addDoctor(doctor2);
   }
 
+  @SafeVarargs
   private static <T> List<T> arrayToList(T... array) {
     List<T> toRet = new LinkedList<>();
     for (T value : array) {

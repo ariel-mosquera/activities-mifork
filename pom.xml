@@ -5,7 +5,7 @@
 
     <groupId>es.uvigo.esei.aed1</groupId>
     <artifactId>activities</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0</version>
 
     <name>AEDI - Activities</name>
     <inceptionYear>2024</inceptionYear>
@@ -87,7 +87,7 @@
         <dependency>
             <groupId>es.uvigo.esei.aed1</groupId>
             <artifactId>tads</artifactId>
-            <version>1.0.10</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

@@ -51,6 +51,7 @@ public class Activity6Test {
         }
     }
     
+    @SafeVarargs
     private static <T> Queue<T> arrayToQueue(T... array) {
       Queue<T> queue = new LinkedQueue<>();
       for (T value : array) {

@@ -31,6 +31,13 @@ public interface HashTable<T> {
     public boolean remove(T elem);
 
     /**
+     * Devuelve cualquier elemento de la tabla hash.
+     *
+     * @return <code>T</code> un elemento cualquiera de la tabla hash.
+     */
+    public T get();
+
+    /**
      * Devuelve el número de elementos almacenados en la tabla hash.
      *
      * @return El número de elementos.

@@ -8,6 +8,7 @@ public class DinamicHashTable<T> implements HashTable<T> {
     private int numElems;
     private List<T>[] data;
 
+    @SuppressWarnings("unchecked")
     public DinamicHashTable(int capacity) throws IllegalArgumentException {
 
     }
@@ -41,6 +42,12 @@ public class DinamicHashTable<T> implements HashTable<T> {
     @Override
     public int size() {
         return -1;
+    }
+
+    @Override
+    public T get() {
+
+        return null;
     }
 
 }

@@ -41,6 +41,7 @@ public class Activity5Test {
     }
   }
 
+  @SafeVarargs
   private static <T> Stack<T> arrayToStack(T... array) {
     Stack<T> stack = new LinkedStack<>();
     for (T value : array) {
