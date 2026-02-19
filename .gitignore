@@ -13,6 +13,8 @@ mvn.sh
 .m2
 
 # General
+*.class
+.DS_Store
 bin/
 tmp/
 *.tmp
