@@ -3,36 +3,41 @@ package es.uvigo.esei.aed1.commonLinked;
 
 public class DoubleNode {
 
+  private DoubleNode previous;
+  private DoubleNode next;
+  private int value;
 
   public DoubleNode(DoubleNode previous, int value, DoubleNode next) {
-    
+    this.previous = previous;
+    this.value = value;
+    this.next = next;
   }
 
   public DoubleNode getPrevious() {
-    return null;
+    return this.previous;
   }
 
   public int getValue() {
-    return 0;
+    return this.value;
   }
 
   public DoubleNode getNext() {
-    return null;
+    return this.next;
   }
 
   public void setPrevious(DoubleNode previous) {
-    
+    this.previous = previous;
   }
 
   public void setValue(int value) {
-    
+    this.value = value;
   }
 
   public void setNext(DoubleNode next) {
-    
+    this.next = next;
   }
 
   public boolean hasValue(int value) {
-    return true;
+    return this.value == value;
   }
 }
