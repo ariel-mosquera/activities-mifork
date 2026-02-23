@@ -5,10 +5,8 @@ import es.uvigo.esei.aed1.commonLinked.DoubleNode;
 
 public class CircularDoublyLinked {
 
-  
-
   public CircularDoublyLinked() {
-    
+
   }
 
   public boolean isEmpty() {
@@ -20,35 +18,35 @@ public class CircularDoublyLinked {
   }
 
   public int numberOfOccurrences(int value) {
-    
+
     return 0;
   }
 
   public boolean contains(int value) {
-    
+
     return true;
   }
 
   public int firstValue() throws NullPointerException {
-    
+
     return 0;
   }
 
   public void addLast(int value) {
-    
+
   }
 
   public void removeFirst() {
-    
+
   }
 
   public void remove(int value) {
-    
+
   }
 
   @Override
   public String toString() {
-    
+
     return "";
   }
 }
