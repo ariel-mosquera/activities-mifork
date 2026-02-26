@@ -61,8 +61,10 @@ public class DoublyLinked {
   public void addFirst(int value) {
     DoubleNode newNode = new DoubleNode(null, value, first);
 
-    if (isEmpty())
-      last = newNode;
+    if (isEmpty()) {
+      first = last = newNode;
+      newNode.setNext(null);
+    }
     else
       first.setPrevious(newNode);
 
@@ -90,13 +92,15 @@ public class DoublyLinked {
       first = last = null;
       numberOfValues--;
 
-    } else if (first.hasValue(value)) {
+    }
+    else if (first.hasValue(value)) {
 
       first.getNext().setPrevious(null);
       first = first.getNext();
       numberOfValues--;
 
-    } else {
+    }
+    else {
       DoubleNode current = first;
 
       while (current != null && !current.hasValue(value)) {
@@ -111,7 +115,8 @@ public class DoublyLinked {
         last = last.getPrevious();
         numberOfValues--;
 
-      } else {
+      }
+      else {
         current.getNext().setPrevious(current.getPrevious());
         current.getPrevious().setNext(current.getNext());
         numberOfValues--;
