@@ -5,8 +5,11 @@ import es.uvigo.esei.aed1.commonLinked.DoubleNode;
 
 public class CircularDoublyLinked {
 
-  public CircularDoublyLinked() {
+  private DoubleNode last, first;
+  private int numberOfValues;
 
+  public CircularDoublyLinked() {
+    this.first = this.last = null;
   }
 
   public boolean isEmpty() {

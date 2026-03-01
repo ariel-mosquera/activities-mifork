@@ -50,6 +50,7 @@ public class CircularLinked {
 
   public int numberOfOccurrences(int value) {
     var counter = 0;
+
     if (!isEmpty()) {
       Node current = last.getNext();
 
@@ -69,15 +70,14 @@ public class CircularLinked {
 
     if (this.isEmpty()) {
       newNode.setNext(newNode);
-      last = newNode;
-      numberOfValues++;
     }
     else {
       newNode.setNext(last.getNext());
       last.setNext(newNode);
-      last = newNode;
-      numberOfValues++;
     }
+
+    last = newNode;
+    numberOfValues++;
   }
 
   public void removeFirst() {
