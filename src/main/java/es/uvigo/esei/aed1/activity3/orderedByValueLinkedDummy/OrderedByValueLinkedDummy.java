@@ -3,11 +3,11 @@ package es.uvigo.esei.aed1.activity3.orderedByValueLinkedDummy;
 public class OrderedByValueLinkedDummy {
 
   private NodePair dummy;
-  private int numOfValues;
+  // private int numOfValues;
 
   public OrderedByValueLinkedDummy() {
     this.dummy = new NodePair(null, null);
-    this.numOfValues = 0;
+    // this.numOfValues = 0;
   }
 
   public boolean contains(int value) {
@@ -42,7 +42,7 @@ public class OrderedByValueLinkedDummy {
       myPair.setCounter(myPair.getCounter() + 1);
     }
 
-    numOfValues++;
+    // numOfValues++;
   }
 
   public void remove(int value) {
@@ -64,7 +64,7 @@ public class OrderedByValueLinkedDummy {
         else
           current.getNext().getPair().setCounter(myPair.getCounter() - 1);
       }
-      numOfValues--;
+      // numOfValues--;
     }
   }
 
