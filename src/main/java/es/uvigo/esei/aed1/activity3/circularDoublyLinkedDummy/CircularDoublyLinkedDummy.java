@@ -5,14 +5,12 @@ import es.uvigo.esei.aed1.commonLinked.DoubleNode;
 
 public class CircularDoublyLinkedDummy {
 
-  
-
   public CircularDoublyLinkedDummy() {
-    
+
   }
 
   public boolean isEmpty() {
-    return true;
+    return false;
   }
 
   public int size() {
@@ -28,20 +26,20 @@ public class CircularDoublyLinkedDummy {
   }
 
   public void addFirst(int value) {
-    
+
   }
 
   public void addLast(int value) {
-    
+
   }
 
   public void remove(int value) {
-    
+
   }
 
   @Override
   public String toString() {
-        
+
     return "";
   }
 
