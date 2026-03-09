@@ -6,11 +6,9 @@ import es.uvigo.esei.aed1.commonLinked.Node;
 public class OrderedLinkedDummy {
 
   private Node dummy;
-  private int numOfValues;
 
   public OrderedLinkedDummy() {
     dummy = new Node(0, null);
-    numOfValues = 0;
   }
 
   public boolean contains(int value) {
@@ -31,7 +29,6 @@ public class OrderedLinkedDummy {
 
     newNode.setNext(current.getNext());
     current.setNext(newNode);
-    numOfValues++;
   }
 
   public void remove(int value) {
@@ -44,7 +41,6 @@ public class OrderedLinkedDummy {
       System.out.println("The value is not in the structure");
     else {
       current.setNext(current.getNext().getNext());
-      numOfValues--;
     }
   }
 
