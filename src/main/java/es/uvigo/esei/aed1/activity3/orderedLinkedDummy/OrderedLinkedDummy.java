@@ -24,7 +24,7 @@ public class OrderedLinkedDummy {
     Node newNode = new Node(value, null);
     Node current = dummy;
 
-    while (current.getNext() != null && current.getNext().getValue() < newNode.getValue())
+    while (current.getNext() != null && current.getNext().getValue() < value)
       current = current.getNext();
 
     newNode.setNext(current.getNext());
