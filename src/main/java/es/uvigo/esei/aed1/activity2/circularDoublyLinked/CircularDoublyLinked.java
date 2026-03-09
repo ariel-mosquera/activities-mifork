@@ -41,15 +41,12 @@ public class CircularDoublyLinked {
     if (isEmpty())
       return false;
 
-    DoubleNode current = last;
+    DoubleNode current = last.getNext();
 
-    do {
-      if (current.hasValue(value))
-        return true;
+    while (current != last && !current.hasValue(value))
       current = current.getNext();
-    } while (current != last);
 
-    return false;
+    return current.hasValue(value);
   }
 
   public int firstValue() throws NullPointerException {

@@ -21,45 +21,43 @@ public class CircularLinked {
   }
 
   public int firstValue() throws NullPointerException {
-    return this.last.getNext().getValue();
+    if (isEmpty())
+      throw new NullPointerException();
+
+    return last.getNext().getValue();
   }
 
   public boolean contains(int value) {
-
-    if (this.isEmpty()) {
-      System.out.println("The list is empty");
+    if (isEmpty())
       return false;
-    }
 
     Node current = last.getNext();
 
-    do {
-      if (current.hasValue(value))
-        return true;
-
+    while (current != last && !current.hasValue(value))
       current = current.getNext();
-    } while (current != last.getNext());
 
-    return false;
-  }
+    /*
+     * do { if (current.hasValue(value)) return true;
+     * 
+     * current = current.getNext(); } while (current != last.getNext());
+     * 
+     * return false;
+     */
 
-  public boolean contains2(int value) {
-
-    return true;
+    return current.hasValue(value);
   }
 
   public int numberOfOccurrences(int value) {
+    if (isEmpty())
+      return 0;
+
     var counter = 0;
+    Node current = last.getNext();
 
-    if (!isEmpty()) {
-      Node current = last.getNext();
-
-      do {
-        if (current.hasValue(value)) {
-          counter++;
-        }
-        current = current.getNext();
-      } while (current != last.getNext());
+    for (int i = 1; i <= numberOfValues; i++) {
+      if (current.hasValue(value))
+        counter++;
+      current = current.getNext();
     }
 
     return counter;
@@ -68,9 +66,8 @@ public class CircularLinked {
   public void addLast(int value) {
     Node newNode = new Node(value, null);
 
-    if (this.isEmpty()) {
+    if (isEmpty())
       newNode.setNext(newNode);
-    }
     else {
       newNode.setNext(last.getNext());
       last.setNext(newNode);
@@ -81,17 +78,16 @@ public class CircularLinked {
   }
 
   public void removeFirst() {
-    if (this.isEmpty()) {
-      System.out.println("There are no elements to remove");
-    }
-    else if (last.getNext() == last) {
-      last = null;
-      numberOfValues--;
-    }
+    if (this.isEmpty())
+      System.out.println("Empty structure");
     else {
       Node first = last.getNext();
-      last.setNext(first.getNext());
-      first.setNext(null);
+
+      if (numberOfValues == 1)
+        last = null;
+      else
+        last.setNext(first.getNext());
+
       numberOfValues--;
     }
   }
@@ -100,16 +96,10 @@ public class CircularLinked {
   public String toString() {
     StringBuilder cad = new StringBuilder();
 
-    if (isEmpty()) {
-      cad.append("Empty list");
-    }
-    else {
-      Node current = last.getNext();
-
-      do {
-        cad.append(current.getValue()).append(" ");
-        current = current.getNext();
-      } while (current != last.getNext());
+    int i = 1;
+    for (Node current = last.getNext(); i <= numberOfValues; i++) {
+      cad.append(current.getValue()).append(" ");
+      current = current.getNext();
     }
 
     return cad.toString();
