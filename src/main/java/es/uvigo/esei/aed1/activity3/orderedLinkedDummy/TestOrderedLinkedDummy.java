@@ -1,7 +1,6 @@
 
 package es.uvigo.esei.aed1.activity3.orderedLinkedDummy;
 
-
 public class TestOrderedLinkedDummy {
 
   public static void main(String[] args) {
@@ -26,7 +25,5 @@ public class TestOrderedLinkedDummy {
     System.out.println("Is the 3 contained? : " + list.contains(3));
 
     System.out.println("List: " + list);
-
   }
-
 }
