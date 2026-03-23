@@ -1,13 +1,11 @@
 package es.uvigo.esei.aed1.activity6.implementation;
 
-
 import static es.uvigo.esei.aed1.activity6.implementation.IsEqualToCustomQueue.equalToCustomQueue;
 import java.util.function.Supplier;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
-
 
 public abstract class CustomQueueTestCase {
 
