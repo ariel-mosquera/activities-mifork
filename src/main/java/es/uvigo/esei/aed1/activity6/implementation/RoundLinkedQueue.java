@@ -3,40 +3,71 @@ package es.uvigo.esei.aed1.activity6.implementation;
 
 import static java.util.Objects.requireNonNull;
 
-
 public class RoundLinkedQueue<T> implements CustomQueue<T> {
 
-    public RoundLinkedQueue() {
-        
+  private Node<T> last;
+  private int numOfValues;
+
+  public RoundLinkedQueue() {
+    last = null;
+    numOfValues = 0;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return numOfValues == 0;
+  }
+
+  @Override
+  public int size() {
+    return numOfValues;
+  }
+
+  @Override
+  public T first() throws EmptyException {
+    if (isEmpty())
+      throw new EmptyException("Empty queue");
+
+    return last.getNext().getValue();
+  }
+
+  @Override
+  public void add(T value) throws NullPointerException {
+    requireNonNull(value);
+
+    Node<T> newNode = new Node<>(value, null);
+
+    if (isEmpty())
+      newNode.setNext(newNode);
+    else {
+      newNode.setNext(last.getNext());
+      last.setNext(newNode);
     }
 
-    @Override
-    public boolean isEmpty() {
-        return true;
-    }
+    last = newNode;
+    numOfValues++;
+  }
 
-    @Override
-    public int size() {
-        return 0;
-    }
+  @Override
+  public T remove() throws EmptyException {
+    if (isEmpty())
+      throw new EmptyException("Empty queue");
 
-    @Override
-    public T first() throws EmptyException {
-      return null;
-    }
+    Node<T> first = last.getNext();
 
-    @Override
-    public void add(T value) throws NullPointerException{
+    if (numOfValues == 1)
+      last = null;
+    else
+      last.setNext(first.getNext());
 
-    }
+    numOfValues--;
 
-    @Override
-    public T remove() throws EmptyException {
-      return null;
-    }
+    return first.getValue();
+  }
 
-    @Override
-    public void clear() {
-
-    }
+  @Override
+  public void clear() {
+    last = null;
+    numOfValues = 0;
+  }
 }
