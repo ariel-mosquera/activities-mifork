@@ -1,22 +1,21 @@
-
 package es.uvigo.esei.aed1.activity6.implementation;
 
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-public class IsEqualToCustomQueue<T> extends TypeSafeMatcher<CustomQueue<T>>{
+public class IsEqualToCustomQueue<T> extends TypeSafeMatcher<CustomQueue<T>> {
   private final CustomQueue<T> expected;
 
-  public IsEqualToCustomQueue(CustomQueue<T> expected){
+  public IsEqualToCustomQueue(CustomQueue<T> expected) {
     this.expected = expected;
   }
-  
+
   @Override
   protected boolean matchesSafely(CustomQueue<T> actual) {
     if (!expected.isEmpty() && !actual.isEmpty()) {
-      return expected.remove().equals(actual.remove())
-              && matchesSafely(actual);
-    } else {
+      return expected.remove().equals(actual.remove()) && matchesSafely(actual);
+    }
+    else {
       return expected.isEmpty() && actual.isEmpty();
     }
   }

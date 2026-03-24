@@ -1,4 +1,3 @@
-
 package es.uvigo.esei.aed1.activity6.implementation;
 
 import static java.util.Objects.requireNonNull;
