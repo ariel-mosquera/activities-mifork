@@ -24,9 +24,9 @@ public class IsEqualToCustomQueue<T> extends TypeSafeMatcher<CustomQueue<T>> {
   public void describeTo(Description description) {
     description.appendText("equal queues");
   }
-  
-  public static <T> IsEqualToCustomQueue<T> equalToCustomQueue(CustomQueue<T> expected){
+
+  public static <T> IsEqualToCustomQueue<T> equalToCustomQueue(CustomQueue<T> expected) {
     return new IsEqualToCustomQueue<>(expected);
   }
-  
+
 }
