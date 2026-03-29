@@ -137,19 +137,20 @@ public class Activity5 {
   }
 
   // Exercice 7
+  // TODO: Solucionar errores de los tests unitarios de este método
   public static boolean isWellParentized(String mathExpression) {
     Stack<Character> parenthesisStack = new LinkedStack<>();
     int stringLength = mathExpression.length();
     boolean wellParentized = true;
 
     for (int i = 0; i < stringLength; i++) {
-      if (isOpeningParenthesis(mathExpression.charAt(i)))
+      if ("([{".indexOf(mathExpression.charAt(i)) != -1)
         parenthesisStack.push(mathExpression.charAt(i));
 
-      if (isClosingParenthesis(mathExpression.charAt(i))) {
+      if (")]}".indexOf(mathExpression.charAt(i)) != -1) {
         if (parenthesisStack.isEmpty())
           wellParentized = false;
-        else
+        else if (mathExpression.charAt(i) == parenthesisStack.top())
           parenthesisStack.pop();
       }
     }
@@ -160,17 +161,15 @@ public class Activity5 {
     return wellParentized;
   }
 
-  private static boolean isOpeningParenthesis(char character) {
-    int indexOfChar = "{[(".indexOf(character);
-
-    return indexOfChar != -1;
-  }
-
-  private static boolean isClosingParenthesis(char character) {
-    int indexOfChar = "}])".indexOf(character);
-
-    return indexOfChar != -1;
-  }
+  /*
+   * private static boolean isOpeningParenthesis(char character) { int indexOfChar = "{[(".indexOf(character);
+   * 
+   * return indexOfChar != -1; }
+   * 
+   * private static boolean isClosingParenthesis(char character) { int indexOfChar = "}])".indexOf(character);
+   * 
+   * return indexOfChar != -1; }
+   */
 
   // Exercise 8
   public static String addDigits(int number) throws IllegalArgumentException {
