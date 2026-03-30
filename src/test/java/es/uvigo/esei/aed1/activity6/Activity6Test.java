@@ -3,17 +3,14 @@ package es.uvigo.esei.aed1.activity6;
 
 import static es.uvigo.esei.aed1.activity6.Activity6.concat;
 import static es.uvigo.esei.aed1.activity6.Activity6.copy;
-import static es.uvigo.esei.aed1.activity6.Activity6.equalsValues;
 import static es.uvigo.esei.aed1.activity6.Activity6.josephus;
 import static es.uvigo.esei.aed1.activity6.Activity6.mix;
 import static es.uvigo.esei.aed1.activity6.Activity6.mixInOrderly;
 import static es.uvigo.esei.aed1.activity6.Activity6.moveToFront;
 import static es.uvigo.esei.aed1.activity6.IsEqualToQueue.equalToQueue;
 import es.uvigo.esei.aed1.activity6.implementation.CustomQueueExerciseTestCase;
-import es.uvigo.esei.aed1.activity6.implementation.CustomQueue;
 import es.uvigo.esei.aed1.activity6.implementation.LinkedQueue2Ref;
 import es.uvigo.esei.aed1.activity6.implementation.RoundLinkedQueue;
-
 
 import es.uvigo.esei.aed1.tads.queue.LinkedQueue;
 import es.uvigo.esei.aed1.tads.queue.Queue;
@@ -24,45 +21,45 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
-
 public class Activity6Test {
-    
-    private Queue<Integer> queue1, queue2;
-    private final Queue<Integer> queue3;
-    private Queue<Integer> expected;
-    
-    public Activity6Test() {
-        queue1 = new LinkedQueue<>();
-        queue2 = new LinkedQueue<>();
-        queue3 = new LinkedQueue<>();
-        expected = new LinkedQueue<>();
+
+  private Queue<Integer> queue1, queue2;
+  private final Queue<Integer> queue3;
+  private Queue<Integer> expected;
+
+  public Activity6Test() {
+    queue1 = new LinkedQueue<>();
+    queue2 = new LinkedQueue<>();
+    queue3 = new LinkedQueue<>();
+    expected = new LinkedQueue<>();
+  }
+
+  @BeforeEach
+  public void setUp() {
+    for (int i = 1; i <= 10; i++) {
+      queue1.add(i);
     }
-    
-    @BeforeEach
-    public void setUp() {
-        for (int i = 1; i <= 10; i++) {
-            queue1.add(i);
-        }
-        for (int i = 11; i <= 20; i++) {
-            queue2.add(i);
-        }
-        for (int i = 1; i <= 10; i++) {
-            queue3.add(5);
-        }
+    for (int i = 11; i <= 20; i++) {
+      queue2.add(i);
     }
-    
-    @SafeVarargs
-    private static <T> Queue<T> arrayToQueue(T... array) {
-      Queue<T> queue = new LinkedQueue<>();
-      for (T value : array) {
-        queue.add(value);
-      }
-      return queue;
+    for (int i = 1; i <= 10; i++) {
+      queue3.add(5);
     }
-    /**
-     * Test of concat method, of class Activity6.
-     */
-    @Test
+  }
+
+  @SafeVarargs
+  private static <T> Queue<T> arrayToQueue(T... array) {
+    Queue<T> queue = new LinkedQueue<>();
+    for (T value : array) {
+      queue.add(value);
+    }
+    return queue;
+  }
+
+  /**
+   * Test of concat method, of class Activity6.
+   */
+  @Test
   public void testConcatNullFirstParameter() {
     queue1 = null;
 
@@ -83,7 +80,7 @@ public class Activity6Test {
   @Test
   public void testConcat() {
     concat(queue1, queue2);
-    
+
     for (int i = 1; i <= 20; i++) {
       expected.add(i);
     }
@@ -97,7 +94,7 @@ public class Activity6Test {
   @Test
   public void testMixNullFirstParameter() {
     queue1 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       mix(queue1, queue2);
     });
@@ -106,7 +103,7 @@ public class Activity6Test {
   @Test
   public void testMixNullSecondParameter() {
     queue2 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       mix(queue1, queue2);
     });
@@ -126,7 +123,7 @@ public class Activity6Test {
   @Test
   public void testCopyNull() {
     queue1 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       copy(queue1);
     });
@@ -136,7 +133,8 @@ public class Activity6Test {
   public void testCopy() {
     Queue<Integer> result = copy(queue1);
 
-    assertThat(queue1, is(equalToQueue(result)));;
+    assertThat(queue1, is(equalToQueue(result)));
+    ;
   }
 
   /**
@@ -145,7 +143,7 @@ public class Activity6Test {
   @Test
   public void testMixInOrderlyNullFirstParameter() {
     queue1 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       mixInOrderly(queue1, queue2);
     });
@@ -154,7 +152,7 @@ public class Activity6Test {
   @Test
   public void testMixInOrderlyNullSecondParameter() {
     queue2 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       mixInOrderly(queue1, queue2);
     });
@@ -176,7 +174,7 @@ public class Activity6Test {
   @Test
   public void testMoveToFrontNull() {
     queue1 = null;
-    
+
     assertThrows(NullPointerException.class, () -> {
       moveToFront(queue1, 5);
     });
@@ -209,42 +207,43 @@ public class Activity6Test {
   @Test
   public void testLinkedQueue2RefEqualsValuesNull() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(LinkedQueue2Ref::new);
-    
+
     test.testEqualsValuesNull();
   }
 
   @Test
   public void testLinkedQueue2RefNotEqualsValues() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(LinkedQueue2Ref::new);
-    
+
     test.testNotEqualsValues();
   }
 
   @Test
   public void testLinkedQueue2RefEqualsValues() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(LinkedQueue2Ref::new);
-    
+
     test.testEqualsValues();
   }
+
   @Test
   public void testRoundLinkedQueueEqualsValuesNull() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(RoundLinkedQueue::new);
-    
+
     test.testEqualsValuesNull();
   }
 
   @Test
   public void testRoundLinkedQueueNotEqualsValues() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(RoundLinkedQueue::new);
-    
+
     test.testNotEqualsValues();
   }
 
   @Test
   public void testRoundLinkedQueueEqualsValues() {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(RoundLinkedQueue::new);
-    
+
     test.testEqualsValues();
   }
-    
+
 }

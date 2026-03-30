@@ -24,8 +24,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
-
-
 public class Activity7Test {
 
   private List<Integer> list1, list2;
@@ -69,13 +67,12 @@ public class Activity7Test {
     return toRet;
   }
 
-  
   /**
    * Test of getHigherThan method, of class Activity7.
    */
   @Test
   public void testGetHigherThanNullList() {
-    List list = null;
+    List<Integer> list = null;
     int number = 5;
 
     assertThrows(NullPointerException.class, () -> {
@@ -86,7 +83,7 @@ public class Activity7Test {
   @Test
   public void testGetHigherThan5() {
     List<Integer> expected = arrayToList(6, 7, 8, 9, 10);
-    
+
     int num = 5;
     List<Integer> result = getHigherThan(list1, num);
 
@@ -97,7 +94,7 @@ public class Activity7Test {
   public void testGetHigherThan10() {
     List<Integer> expected = new LinkedList<>();
     int num = 10;
-    
+
     List<Integer> result = getHigherThan(list1, num);
 
     assertThat(result, is(equalToList(expected)));
@@ -108,7 +105,7 @@ public class Activity7Test {
    */
   @Test
   public void testInvertNull() {
-    final List list = null;
+    final List<?> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       invert(list);
@@ -136,7 +133,7 @@ public class Activity7Test {
    */
   @Test
   public void testAllValuesAppearancesAreEqualNull() {
-    List list = null;
+    List<Integer> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       allValuesAppearancesAreEqual(list);
@@ -145,7 +142,7 @@ public class Activity7Test {
 
   @Test
   public void testAllValuesAppearancesAreEqualTrue() {
-    
+
     assertThat(allValuesAppearancesAreEqual(list1), is(true));
   }
 
@@ -161,8 +158,8 @@ public class Activity7Test {
    */
   @Test
   public void testIsAscendingOrderNull() {
-    
-    List list = null;
+
+    List<Integer> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       isAscendingOrder(list);
@@ -171,13 +168,13 @@ public class Activity7Test {
 
   @Test
   public void testIsAscendingOrderTrue() {
-    
+
     assertThat(isAscendingOrder(list1), is(true));
   }
 
   @Test
   public void testIsAscendingOrderFalse() {
-    
+
     assertThat(isAscendingOrder(list2), is(false));
   }
 
@@ -186,8 +183,8 @@ public class Activity7Test {
    */
   @Test
   public void testbuildListWithRepeatedValuesNull() {
-    
-    List list = null;
+
+    List<?> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       buildListWithRepeatedValues(list);
@@ -198,7 +195,7 @@ public class Activity7Test {
   public void testbuildListWithRepeatedValues0() {
     List<Integer> expected = new LinkedList<>();
     List<Integer> result = buildListWithRepeatedValues(list1);
-    
+
     assertThat(result, is(equalToList(expected)));
   }
 
@@ -216,8 +213,8 @@ public class Activity7Test {
    */
   @Test
   public void testBuildSummaryListNull() {
-    List list1 = null;
-    List list2 = null;
+    List<Integer> list1 = null;
+    List<Integer> list2 = null;
 
     assertThrows(NullPointerException.class, () -> {
       buildSummaryList(list1, list2);
@@ -229,14 +226,7 @@ public class Activity7Test {
     List<Integer> list1 = arrayToList(1, 2, 1, 3, 4, 2);
     List<Integer> list2 = arrayToList(6, 1, 3, 2, 6, 7);
 
-    List<Terna<Integer>> expected = arrayToList(
-      new Terna<>(1, 2, 1),
-      new Terna<>(2, 2, 1),
-      new Terna<>(3, 1, 1),
-      new Terna<>(4, 1, 0),
-      new Terna<>(6, 0, 2),
-      new Terna<>(7, 0, 1)
-    );
+    List<Terna<Integer>> expected = arrayToList(new Terna<>(1, 2, 1), new Terna<>(2, 2, 1), new Terna<>(3, 1, 1), new Terna<>(4, 1, 0), new Terna<>(6, 0, 2), new Terna<>(7, 0, 1));
     List<Terna<Integer>> result = buildSummaryList(list1, list2);
 
     assertThat(result, is(equalToList(expected)));
@@ -247,7 +237,7 @@ public class Activity7Test {
    */
   @Test
   public void testCountValuesEqualSumPrecedingNull() {
-    List list = null;
+    List<Integer> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       countValuesEqualSumPreceding(list);
@@ -273,8 +263,8 @@ public class Activity7Test {
    */
   @Test
   public void testPrintLotsNull() {
-    List list = null;
-    List index = null;
+    List<?> list = null;
+    List<Integer> index = null;
 
     assertThrows(NullPointerException.class, () -> {
       printLots(list, index);
@@ -308,7 +298,7 @@ public class Activity7Test {
    */
   @Test
   public void testDuplicateValuesNull() {
-    List list = null;
+    List<Integer> list = null;
 
     assertThrows(NullPointerException.class, () -> {
       duplicateValues(list);
@@ -319,7 +309,7 @@ public class Activity7Test {
   public void testDuplicateValues5() {
     List<Integer> result = arrayToList(2, 7, 1, 4, 5);
     List<Integer> expected = arrayToList(4, 14, 2, 8, 10);
-    
+
     duplicateValues(result);
 
     assertThat(result, is(equalToList(expected)));
@@ -329,12 +319,12 @@ public class Activity7Test {
   public void testDuplicateValues6() {
     List<Integer> result = arrayToList(-1, 5, 3, 0, 2, 8);
     List<Integer> expected = arrayToList(-2, 10, 6, 0, 4, 16);
-    
+
     duplicateValues(result);
 
     assertThat(result, is(equalToList(expected)));
   }
-  
+
   /**
    * Test of getMorePatients method, of class ExHospital.
    */
@@ -342,7 +332,7 @@ public class Activity7Test {
   public void testGetMorePatients() {
     Integer expResult = 2;
     Integer result = getMorePatients(hospital);
-    
+
     assertEquals(expResult, result);
   }
 
