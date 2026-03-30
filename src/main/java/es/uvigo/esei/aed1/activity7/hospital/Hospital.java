@@ -1,4 +1,3 @@
-
 package es.uvigo.esei.aed1.activity7.hospital;
 
 import es.uvigo.esei.aed1.tads.list.List;
