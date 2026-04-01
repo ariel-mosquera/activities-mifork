@@ -1,7 +1,7 @@
 package es.uvigo.esei.aed1.activity7.sparsematrix;
 
 /**
- *Representa un par (número de columna, valor almacenado) 
+ * Representa un par (número de columna, valor almacenado)
  * 
  */
 public class ValueCol {
@@ -24,5 +24,4 @@ public class ValueCol {
   public void setValue(Number value) {
     this.value = value;
   }
-  
 }
