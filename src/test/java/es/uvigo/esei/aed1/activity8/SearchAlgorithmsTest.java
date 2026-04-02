@@ -37,13 +37,9 @@ public class SearchAlgorithmsTest {
         int xPosition = 2;
         int yPosition = 7;
         int newColor = 3;
-        int [][] result = {{1,1,1,1,1,1,1,3,1,1},
-        {2,2,2,2,2,2,2,3,2,2},
-        {2,2,2,2,2,3,3,3,3,3},
-        {2,2,2,2,2,2,2,3,2,2},
-        {2,2,2,2,2,2,2,3,2,2}};
+        int[][] result = { { 1, 1, 1, 1, 1, 1, 1, 3, 1, 1 }, { 2, 2, 2, 2, 2, 2, 2, 3, 2, 2 }, { 2, 2, 2, 2, 2, 3, 3, 3, 3, 3 }, { 2, 2, 2, 2, 2, 2, 2, 3, 2, 2 }, { 2, 2, 2, 2, 2, 2, 2, 3, 2, 2 } };
         SearchAlgorithms.fillIn(aux3, xPosition, yPosition, newColor);
-        assertTrue(equalMatrices(aux3,result));
+        assertTrue(equalMatrices(aux3, result));
     }
 
     /**
