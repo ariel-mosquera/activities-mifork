@@ -4,42 +4,30 @@ package es.uvigo.esei.aed1.activity8;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public class SearchAlgorithmsTest {
-    private final int [] aux1 = {2,8,15,15,15,30,35,45};
-    
-    private final int [] aux2 = {30,25,18,15,8,2,0,0};
-    
-    private final int [][] aux3 = {{1,1,1,1,1,1,1,1,1,1},
-                        {2,2,2,2,2,2,2,1,2,2},
-                        {2,2,2,2,2,1,1,1,1,1},
-                        {2,2,2,2,2,2,2,1,2,2},
-                        {2,2,2,2,2,2,2,1,2,2}};
-    
-    private final int [][] magic1 = {{1,14,14,4},
-                                    {11,7,6,9},
-                                    {8,10,10,5},
-                                    {13,2,3,15}};
-    
-    private final int [][] magic2 = {{4,14,15,1},
-                                    {9,7,6,12},
-                                    {5,11,10,8},
-                                    {16,2,3,13}};
-    
-    private final int [] aux4 = {-3,0,2,9,10,12,15};
-    private final int [] aux5 = {-3,0,1,2,4,12,15};
-    private final int [] aux6 = {-3,0,1,2,10,12,15};
- 
-    private static boolean equalMatrices(int[][] m1, int[][] m2){
+    private final int[] aux1 = { 2, 8, 15, 15, 15, 30, 35, 45 };
 
-           for (int i=0; i<m1.length; i++)
-               for (int j=0; j<m1[0].length; j++)
-                  if (m1[i][j] != m2[i][j])
-                      return false;
-              
-           return true;
-}
-    
+    private final int[] aux2 = { 30, 25, 18, 15, 8, 2, 0, 0 };
+
+    private final int[][] aux3 = { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2, 2, 2, 1, 2, 2 }, { 2, 2, 2, 2, 2, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2, 2, 2, 1, 2, 2 }, { 2, 2, 2, 2, 2, 2, 2, 1, 2, 2 } };
+
+    private final int[][] magic1 = { { 1, 14, 14, 4 }, { 11, 7, 6, 9 }, { 8, 10, 10, 5 }, { 13, 2, 3, 15 } };
+
+    private final int[][] magic2 = { { 4, 14, 15, 1 }, { 9, 7, 6, 12 }, { 5, 11, 10, 8 }, { 16, 2, 3, 13 } };
+
+    private final int[] aux4 = { -3, 0, 2, 9, 10, 12, 15 };
+    private final int[] aux5 = { -3, 0, 1, 2, 4, 12, 15 };
+    private final int[] aux6 = { -3, 0, 1, 2, 10, 12, 15 };
+
+    private static boolean equalMatrices(int[][] m1, int[][] m2) {
+
+        for (int i = 0; i < m1.length; i++)
+            for (int j = 0; j < m1[0].length; j++)
+                if (m1[i][j] != m2[i][j])
+                    return false;
+
+        return true;
+    }
 
     /**
      * Test of fillIn method, of class SearchAlgorithms.
