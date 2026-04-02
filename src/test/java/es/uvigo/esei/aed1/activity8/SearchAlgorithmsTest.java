@@ -103,25 +103,25 @@ public class SearchAlgorithmsTest {
     @Test
     public void testContainNumberTrue() {
         int beginning = 0;
-        int fin = aux4.length-1;
+        int fin = aux4.length - 1;
         int expResult = 2;
         int result = SearchAlgorithms.containNumber(aux4, beginning, fin);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testContainNumberTrue2() {
         int beginning = 0;
-        int fin = aux5.length-1;
+        int fin = aux5.length - 1;
         int expResult = 4;
         int result = SearchAlgorithms.containNumber(aux5, beginning, fin);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testContainNumberFalse() {
         int beginning = 0;
-        int fin = aux6.length-1;
+        int fin = aux6.length - 1;
         int expResult = -1;
         int result = SearchAlgorithms.containNumber(aux6, beginning, fin);
         assertEquals(expResult, result);
@@ -138,5 +138,5 @@ public class SearchAlgorithmsTest {
         int result = SearchAlgorithms.searchInsertionDec(aux2, elem, max);
         assertEquals(expResult, result);
     }
-    
+
 }
