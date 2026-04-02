@@ -52,21 +52,34 @@ public class Activity5 {
   }
 
   // Exercise 2 ii
+  // public static <T> Stack<T> copy(Stack<T> stack) throws NullPointerException {
+  // requireNonNull(stack);
+
+  // Stack<T> copy = new LinkedStack<>();
+  // Stack<T> auxCopy = new LinkedStack<>();
+
+  // while (!stack.isEmpty())
+  // auxCopy.push(stack.pop());
+
+  // while (!auxCopy.isEmpty()) {
+  // stack.push(auxCopy.top());
+  // copy.push(auxCopy.pop());
+  // }
+
+  // return copy;
+  // }
+
   public static <T> Stack<T> copy(Stack<T> stack) throws NullPointerException {
     requireNonNull(stack);
 
-    Stack<T> copy = new LinkedStack<>();
-    Stack<T> auxCopy = new LinkedStack<>();
+    if (stack.isEmpty())
+      return new LinkedStack<T>();
 
-    while (!stack.isEmpty())
-      auxCopy.push(stack.pop());
-
-    while (!auxCopy.isEmpty()) {
-      stack.push(auxCopy.top());
-      copy.push(auxCopy.pop());
-    }
-
-    return copy;
+    T top = stack.pop();
+    Stack<T> result = copy(stack);
+    stack.push(top);
+    result.push(top);
+    return result;
   }
 
   // Exercise 3
