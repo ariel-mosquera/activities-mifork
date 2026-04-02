@@ -51,7 +51,7 @@ public class SearchAlgorithmsTest {
         int magicConstant = (n * ((int) Math.pow(n, 2) + 1)) / 2;
         assertTrue(SearchAlgorithms.isMagicSquare(magic2, magicConstant));
     }
-    
+
     @Test
     public void testIsMagicSquareFalse() {
         int n = magic1.length;
@@ -69,7 +69,7 @@ public class SearchAlgorithmsTest {
         int result = SearchAlgorithms.howManyMinors(aux1, elem);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testHowManyMinorsNoIsElem() {
         int elem = 22;
@@ -88,7 +88,7 @@ public class SearchAlgorithmsTest {
         int result = SearchAlgorithms.howManyOlder(aux1, elem);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testHowManyOlderNoIsElem() {
         int elem = 22;
