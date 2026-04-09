@@ -90,23 +90,57 @@ public class SearchAlgorithms {
 
     }
 
-    // TODO: estudiar busqueda por hashing
-
     // Exercise 3
     public static int howManyMinors(int[] aux, int elem) {
+        int start = 0;
+        int end = aux.length - 1;
 
-        return -1;
+        while (start <= end) {
+            int middle = (start + end) / 2;
+
+            if (aux[middle] > elem)
+                end = middle - 1;
+            else if (aux[middle] < elem)
+                start = middle + 1;
+            else
+                end = middle - 1;
+        }
+
+        return start;
     }
 
     // Exercise 4
     public static int howManyOlder(int[] aux, int elem) {
+        int start = 0;
+        int end = aux.length - 1;
 
-        return -1;
+        while (start <= end) {
+            int middle = (start + end) / 2;
+
+            if (aux[middle] > elem)
+                end = middle - 1;
+            else if (aux[middle] < elem)
+                start = middle + 1;
+            else
+                start = middle + 1;
+        }
+
+        return aux.length - start;
     }
 
     // Exercise 5
-    public static int containNumber(int[] array, int beginning, int fin) {
-        return -1;
+    public static int containNumber(int[] array, int beginning, int end) {
+        if (beginning > end)
+            return -1;
+
+        int middle = (beginning + end) / 2;
+
+        if (array[middle] > middle)
+            return containNumber(array, beginning, middle - 1);
+        if (array[middle] < middle)
+            return containNumber(array, middle + 1, end);
+        else
+            return middle;
     }
 
     // Exercise 6
