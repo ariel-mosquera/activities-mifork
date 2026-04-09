@@ -7,55 +7,90 @@ public class SearchAlgorithms {
         if (xPosition < 0 || xPosition >= aux.length || yPosition < 0 || yPosition >= aux[0].length)
             throw new IndexOutOfBoundsException("Invalid position");
 
+        if (aux[xPosition][yPosition] == newColor)
+            return;
+
         int oldColor = aux[xPosition][yPosition];
+        int x = xPosition;
+        int y = yPosition;
+
         // vertical search going down
-        int i = xPosition;
-        boolean isContiguous = true;
-        while (i < aux.length && isContiguous) {
-            if (aux[i][yPosition] == oldColor)
-                aux[i][yPosition] = newColor;
-            else
-                isContiguous = false;
-            i++;
-        }
+        while (x < aux.length && aux[x][y] == oldColor)
+            aux[x++][y] = newColor;
+
         // vertical search going up
-        i = xPosition - 1;
-        isContiguous = true;
-        while (i >= 0 && isContiguous) {
-            if (aux[i][yPosition] == oldColor)
-                aux[i][yPosition] = newColor;
-            else
-                isContiguous = false;
-            i--;
-        }
+        x = xPosition - 1;
+        while (x >= 0 && aux[x][y] == oldColor)
+            aux[x--][yPosition] = newColor;
+
         // horizontal search going right
-        i = yPosition + 1;
-        isContiguous = true;
-        while (i < aux[0].length && isContiguous) {
-            if (aux[xPosition][i] == oldColor)
-                aux[xPosition][i] = newColor;
-            else
-                isContiguous = false;
-            i++;
-        }
+        x = xPosition;
+        y = yPosition + 1;
+        while (y < aux[0].length && aux[x][y] == oldColor)
+            aux[x][y++] = newColor;
+
         // horizontal search going left
-        i = yPosition - 1;
-        isContiguous = true;
-        while (i >= 0 && isContiguous) {
-            if (aux[xPosition][i] == oldColor)
-                aux[xPosition][i] = newColor;
-            else
-                isContiguous = false;
-            i--;
-        }
+        y = yPosition - 1;
+        while (y >= 0 && aux[x][y] == oldColor)
+            aux[xPosition][y--] = newColor;
     }
 
     // Exercise 2
     public static boolean isMagicSquare(int[][] board, int magicConstant) {
+        int size = board.length;
+
+        for (int i = 1; i <= size * size; i++) {
+            int row = 0;
+            int col = 0;
+            boolean found = false;
+
+            while (row < board.length && !found) {
+                while (col < board[0].length && !found) {
+                    if (board[row][col] == i)
+                        found = true;
+
+                    col++;
+                }
+                row++;
+                col = 0;
+            }
+
+            if (!found)
+                return false;
+        }
+
+        int sumRow = 0;
+        int sumCol = 0;
+
+        for (int i = 0; i < size; i++) {
+            sumRow = 0;
+            sumCol = 0;
+
+            for (int j = 0; j < size; j++) {
+                sumRow += board[i][j];
+                sumCol += board[j][i];
+            }
+
+            if (sumRow != magicConstant || sumCol != magicConstant)
+                return false;
+        }
+
+        int sumDiagonal1 = 0;
+        int sumDiagonal2 = 0;
+
+        for (int i = 0; i < size; i++) {
+            sumDiagonal1 += board[i][i];
+            sumDiagonal2 += board[i][size - 1 - i];
+        }
+
+        if (sumDiagonal1 != magicConstant || sumDiagonal2 != magicConstant)
+            return false;
 
         return true;
 
     }
+
+    // TODO: estudiar busqueda por hashing
 
     // Exercise 3
     public static int howManyMinors(int[] aux, int elem) {
