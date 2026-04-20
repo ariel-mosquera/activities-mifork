@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
 public class LinkedQueue2Ref<T> implements CustomQueue<T> {
 
   private Node<T> first;
+  @SuppressWarnings("unused")
   private Node<T> last;
   private int numOfValues;
 
