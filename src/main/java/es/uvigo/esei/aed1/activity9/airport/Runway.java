@@ -9,34 +9,37 @@ public class Runway {
     private int numRunway;
     private DinamicHashTable<String> destinationsPartners;
     private Queue<Flight> flightsOnStandby;
-    
-    public Runway(int numRunway){
-  
-    }
-    
-    public void assignDestination(String destination){
 
-        
+    public Runway(int numRunway) {
+        this.numRunway = numRunway;
+        this.destinationsPartners = new DinamicHashTable<>(10);
+        this.flightsOnStandby = new LinkedQueue<>();
     }
-    
-    public void assignFlight(Flight v){
 
+    public void assignDestination(String destination) {
+        destinationsPartners.add(destination);
     }
-    
-    public Flight removeFlight(){
-        
-        return null;
+
+    public void assignFlight(Flight v) {
+        flightsOnStandby.add(v);
     }
-    
-    public int getNumRunway(){
-        return 0;
+
+    public Flight removeFlight() {
+        if (!flightsOnStandby.isEmpty())
+            return flightsOnStandby.remove();
+        else
+            return null;
     }
-    
-    public boolean isDestination(String destination){
-        return false;
+
+    public int getNumRunway() {
+        return numRunway;
     }
-    
-    public int numberFlight(){
-        return 0;
-    }      
+
+    public boolean isDestination(String destination) {
+        return destinationsPartners.search(destination);
+    }
+
+    public int numberFlight() {
+        return flightsOnStandby.size();
+    }
 }
