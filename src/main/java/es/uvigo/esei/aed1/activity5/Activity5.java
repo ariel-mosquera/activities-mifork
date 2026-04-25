@@ -3,6 +3,7 @@ package es.uvigo.esei.aed1.activity5;
 
 import static java.util.Objects.requireNonNull;
 
+import es.uvigo.esei.aed1.activity6.implementation.EmptyException;
 import es.uvigo.esei.aed1.tads.stack.LinkedStack;
 import es.uvigo.esei.aed1.tads.stack.Stack;
 
@@ -52,24 +53,24 @@ public class Activity5 {
   }
 
   // Exercise 2 ii
-  // public static <T> Stack<T> copy(Stack<T> stack) throws NullPointerException {
-  // requireNonNull(stack);
-
-  // Stack<T> copy = new LinkedStack<>();
-  // Stack<T> auxCopy = new LinkedStack<>();
-
-  // while (!stack.isEmpty())
-  // auxCopy.push(stack.pop());
-
-  // while (!auxCopy.isEmpty()) {
-  // stack.push(auxCopy.top());
-  // copy.push(auxCopy.pop());
-  // }
-
-  // return copy;
-  // }
-
   public static <T> Stack<T> copy(Stack<T> stack) throws NullPointerException {
+    requireNonNull(stack);
+
+    Stack<T> copy = new LinkedStack<>();
+    Stack<T> auxCopy = new LinkedStack<>();
+
+    while (!stack.isEmpty())
+      auxCopy.push(stack.pop());
+
+    while (!auxCopy.isEmpty()) {
+      stack.push(auxCopy.top());
+      copy.push(auxCopy.pop());
+    }
+
+    return copy;
+  }
+
+  public static <T> Stack<T> copyRecursive(Stack<T> stack) throws NullPointerException {
     requireNonNull(stack);
 
     if (stack.isEmpty())
@@ -79,6 +80,7 @@ public class Activity5 {
     Stack<T> result = copy(stack);
     stack.push(top);
     result.push(top);
+
     return result;
   }
 
@@ -150,39 +152,33 @@ public class Activity5 {
   }
 
   // Exercice 7
-  // TODO: Solucionar errores de los tests unitarios de este método
   public static boolean isWellParentized(String mathExpression) {
-    Stack<Character> parenthesisStack = new LinkedStack<>();
-    int stringLength = mathExpression.length();
+    Stack<Character> controlStack = new LinkedStack<>();
     boolean wellParentized = true;
 
-    for (int i = 0; i < stringLength; i++) {
-      if ("([{".indexOf(mathExpression.charAt(i)) != -1)
-        parenthesisStack.push(mathExpression.charAt(i));
+    mathExpression = mathExpression.trim();
 
-      if (")]}".indexOf(mathExpression.charAt(i)) != -1) {
-        if (parenthesisStack.isEmpty())
+    for (int i = 0; i < mathExpression.length(); i++) {
+
+      if ("{[(".indexOf(mathExpression.charAt(i)) != -1) {
+        controlStack.push(mathExpression.charAt(i));
+
+      } else if (")]}".indexOf(mathExpression.charAt(i)) != -1) {
+
+        if (controlStack.isEmpty() || "{[(".indexOf(controlStack.top()) != "}])".indexOf(mathExpression.charAt(i))) {
           wellParentized = false;
-        else if (mathExpression.charAt(i) == parenthesisStack.top())
-          parenthesisStack.pop();
+          break;
+        } else {
+          controlStack.pop();
+        }
       }
     }
 
-    if (!parenthesisStack.isEmpty())
+    if (!controlStack.isEmpty())
       wellParentized = false;
 
     return wellParentized;
   }
-
-  /*
-   * private static boolean isOpeningParenthesis(char character) { int indexOfChar = "{[(".indexOf(character);
-   * 
-   * return indexOfChar != -1; }
-   * 
-   * private static boolean isClosingParenthesis(char character) { int indexOfChar = "}])".indexOf(character);
-   * 
-   * return indexOfChar != -1; }
-   */
 
   // Exercise 8
   public static String addDigits(int number) throws IllegalArgumentException {
@@ -260,27 +256,35 @@ public class Activity5 {
   }
 
   // exercise 10
-  public static int calculateScore(String expression) throws NullPointerException {
-    if (expression == null)
-      throw new NullPointerException();
+  public static int calculateScore(String mathExpression) throws NullPointerException {
+    requireNonNull(mathExpression);
 
-    expression.trim();
+    mathExpression = mathExpression.trim();
 
     Stack<Integer> auxStack = new LinkedStack<>();
-    int size = expression.length();
-    int result = 0;
+    int sum = 0;
+    int currentNum = 0;
 
-    for (int i = 0; i < size; i++) {
-      char current = expression.charAt(i);
+    for (int i = 0; i < mathExpression.length(); i++) {
+      char current = mathExpression.charAt(i);
 
-      if (auxStack.isEmpty()) {
-        if (current == '(')
-          auxStack.push(expression.charAt(i + 1));
-
+      if (Character.isDigit(current)) {
+        currentNum = current - '0';
+      } else if (current == '+') {
+        sum += currentNum;
+      } else if (current == '(') {
+        auxStack.push(sum);
+        sum = 0;
+      } else if (current == ')') {
+        sum += currentNum;
+        currentNum = 0;
+        sum *= 2;
+        sum += auxStack.pop();
       }
-
     }
 
-  }
+    sum += currentNum;
 
+    return sum;
+  }
 }
