@@ -259,4 +259,28 @@ public class Activity5 {
     }
   }
 
+  // exercise 10
+  public static int calculateScore(String expression) throws NullPointerException {
+    if (expression == null)
+      throw new NullPointerException();
+
+    expression.trim();
+
+    Stack<Integer> auxStack = new LinkedStack<>();
+    int size = expression.length();
+    int result = 0;
+
+    for (int i = 0; i < size; i++) {
+      char current = expression.charAt(i);
+
+      if (auxStack.isEmpty()) {
+        if (current == '(')
+          auxStack.push(expression.charAt(i + 1));
+
+      }
+
+    }
+
+  }
+
 }
