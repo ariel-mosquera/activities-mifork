@@ -7,6 +7,7 @@ import static es.uvigo.esei.aed1.activity6.Activity6.josephus;
 import static es.uvigo.esei.aed1.activity6.Activity6.mix;
 import static es.uvigo.esei.aed1.activity6.Activity6.mixInOrderly;
 import static es.uvigo.esei.aed1.activity6.Activity6.moveToFront;
+import static es.uvigo.esei.aed1.activity6.Activity6.isRotation;
 import static es.uvigo.esei.aed1.activity6.IsEqualToQueue.equalToQueue;
 import es.uvigo.esei.aed1.activity6.implementation.CustomQueueExerciseTestCase;
 import es.uvigo.esei.aed1.activity6.implementation.LinkedQueue2Ref;
@@ -244,6 +245,53 @@ public class Activity6Test {
     CustomQueueExerciseTestCase test = new CustomQueueExerciseTestCase(RoundLinkedQueue::new);
 
     test.testEqualsValues();
+  }
+
+  @Test
+  public void testIsRotationTrue() {
+    Queue<Integer> queue4 = new LinkedQueue<>();
+    Queue<Integer> queue5 = new LinkedQueue<>();
+
+    for (int i = 1; i <= 5; i++) {
+      queue4.add(i);
+      queue5.add(i);
+    }
+
+    for (int i = 0; i < 2; i++)
+      queue5.add(queue5.remove());
+
+    assertTrue(Activity6.isRotation(queue4, queue5));
+  }
+
+  @Test
+  public void testIsRotationFalse() {
+    Queue<Integer> queue4 = new LinkedQueue<>();
+    Queue<Integer> queue5 = new LinkedQueue<>();
+
+    for (int i = 1; i <= 3; i++)
+      queue4.add(i);
+
+    queue5.add(2);
+    queue5.add(1);
+    queue5.add(3);
+
+    assertFalse(isRotation(queue4, queue5));
+  }
+
+  @Test
+  public void isRotationQueue1Null() {
+    queue1 = null;
+    assertThrows(NullPointerException.class, () -> {
+      isRotation(queue1, queue2);
+    });
+  }
+
+  @Test
+  public void isRotationQueue2Null() {
+    queue2 = null;
+    assertThrows(NullPointerException.class, () -> {
+      isRotation(queue1, queue2);
+    });
   }
 
 }

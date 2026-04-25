@@ -73,8 +73,7 @@ public class Activity6 {
         if (!copy1.isEmpty()) {
             while (!copy1.isEmpty())
                 mixedQueue.add(copy1.remove());
-        }
-        else if (!copy2.isEmpty()) {
+        } else if (!copy2.isEmpty()) {
             while (!copy2.isEmpty())
                 mixedQueue.add(copy2.remove());
         }
@@ -122,8 +121,7 @@ public class Activity6 {
             if (counter < jump) {
                 soldiers.add(soldiers.remove());
                 counter++;
-            }
-            else {
+            } else {
                 soldiers.remove();
                 counter = 1;
             }
@@ -147,6 +145,40 @@ public class Activity6 {
         }
 
         return valid;
+    }
+
+    // Ejercicio 7 (extra)
+    public static boolean isRotation(Queue<Integer> queue1, Queue<Integer> queue2) throws NullPointerException {
+        requireNonNull(queue1, "Queue 1 can't be null");
+        requireNonNull(queue2, "Queue 2 can't be null");
+
+        if (queue1.size() != queue2.size())
+            return false;
+
+        boolean isEquals = true;
+        int size = queue1.size();
+        int i = 0;
+
+        while (!queue1.first().equals(queue2.first()) && i < size) {
+            queue1.add(queue1.remove());
+            if (!queue1.first().equals(queue2.first()))
+                i++;
+        }
+
+        if (i != size) {
+            for (int j = 0; j < size; j++) {
+                if (!queue1.first().equals(queue2.first()))
+                    isEquals = false;
+
+                queue1.add(queue1.remove());
+                queue2.add(queue2.remove());
+            }
+        }
+
+        for (int j = i; j < size; j++)
+            queue1.add(queue1.remove());
+
+        return isEquals;
     }
 
 }
