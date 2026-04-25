@@ -3,7 +3,6 @@ package es.uvigo.esei.aed1.activity5;
 
 import static java.util.Objects.requireNonNull;
 
-import es.uvigo.esei.aed1.activity6.implementation.EmptyException;
 import es.uvigo.esei.aed1.tads.stack.LinkedStack;
 import es.uvigo.esei.aed1.tads.stack.Stack;
 
