@@ -29,11 +29,10 @@ public class FireExtinguisher {
     public String getDateStamped() {
         return dateStamped;
     }
-    
-@Override
-    public String toString(){
-        return referenceNumber +", "+type;
-    }
 
+    @Override
+    public String toString() {
+        return referenceNumber + ", " + type;
+    }
 
 }
