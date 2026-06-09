@@ -83,7 +83,8 @@ public class SortAlgorithms {
                 k++;
             }
         }
-        //Si llega al final del array y todos los elementos son iguales, o si sólo hay un elemento
+        // Si llega al final del array y todos los elementos son iguales, o si sólo hay
+        // un elemento
         return -1;
     }
 
