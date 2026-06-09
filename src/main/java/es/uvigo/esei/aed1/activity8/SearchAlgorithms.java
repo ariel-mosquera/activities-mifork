@@ -145,8 +145,29 @@ public class SearchAlgorithms {
 
     // Exercise 6
     public static int searchInsertionDec(int[] aux, int elem, int max) {
-        return -1;
+        if (max == aux.length - 1)
+            return -1;
 
+        int start = 0;
+        int end = max;
+
+        while (start <= end) {
+            int middle = (start + end) / 2;
+
+            if (aux[middle] > elem)
+                start = middle + 1;
+            else if (aux[middle] < elem)
+                end = middle - 1;
+            else
+                return middle;
+        }
+
+        for (int i = max; i >= start; i--)
+            aux[i + 1] = aux[i];
+
+        aux[start] = elem;
+        max++;
+        return start;
     }
 
 }
